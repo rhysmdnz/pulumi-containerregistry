@@ -49,7 +49,7 @@ setup(name='pulumi_containerregistry',
       keywords='pulumi containerregistry category/cloud',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/rhysmdnz/pulumi-containerregistry'
+          'Repository': 'github://api.github.com/rhysmdnz/pulumi-containerregistry'
       },
       license='Apache-2.0',
       packages=find_packages(),
