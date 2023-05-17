@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "https://github.com/rhysmdnz/pulumi-containerregistry/releases/",
+		PluginDownloadURL: "github://api.github.com/rhysmdnz/pulumi-containerregistry",
 		Description:       "A Pulumi package for creating and managing containerregistry cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -77,7 +77,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "containerregistry", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "github://api.github.com/rhysmdnz/pulumi-containerregistry",
+		Repository: "https://github.com/rhysmdnz/pulumi-containerregistry",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "rhysmdnz",

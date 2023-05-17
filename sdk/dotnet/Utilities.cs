@@ -53,7 +53,7 @@ namespace Pulumi.Containerregistry
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/rhysmdnz/pulumi-containerregistry/releases/";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/rhysmdnz/pulumi-containerregistry";
             return dst;
         }
 

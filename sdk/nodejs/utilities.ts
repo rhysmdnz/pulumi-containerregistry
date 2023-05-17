@@ -50,7 +50,7 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/rhysmdnz/pulumi-containerregistry/releases/" };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/rhysmdnz/pulumi-containerregistry" };
 }
 
 /** @internal */

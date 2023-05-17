@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "containerregistry",
-  "server": "https://github.com/rhysmdnz/pulumi-containerregistry/releases/"
+  "server": "github://api.github.com/rhysmdnz/pulumi-containerregistry"
 }
