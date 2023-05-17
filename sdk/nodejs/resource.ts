@@ -35,7 +35,7 @@ export class Resource extends pulumi.CustomResource {
     /**
      * Hash of the image tarball.
      */
-    public readonly imageTarballHash!: pulumi.Output<string>;
+    public readonly imageTarballHash!: pulumi.Output<string | undefined>;
     /**
      * Image tarball thing.
      */
@@ -63,9 +63,6 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["remoteTag"] = state ? state.remoteTag : undefined;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            if ((!args || args.imageTarballHash === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'imageTarballHash'");
-            }
             if ((!args || args.image_tarball === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'image_tarball'");
             }
@@ -106,7 +103,7 @@ export interface ResourceArgs {
     /**
      * Hash of the image tarball.
      */
-    imageTarballHash: pulumi.Input<string>;
+    imageTarballHash?: pulumi.Input<string>;
     /**
      * Image tarball thing.
      */

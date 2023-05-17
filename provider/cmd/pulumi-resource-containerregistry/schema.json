@@ -73,7 +73,6 @@
             },
             "required": [
                 "image_tarball",
-                "imageTarballHash",
                 "remoteTag"
             ],
             "inputProperties": {
@@ -95,7 +94,6 @@
             },
             "requiredInputs": [
                 "image_tarball",
-                "imageTarballHash",
                 "remoteTag"
             ],
             "stateInputs": {

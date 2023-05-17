@@ -16,7 +16,7 @@ namespace Pulumi.Containerregistry
         /// Hash of the image tarball.
         /// </summary>
         [Output("imageTarballHash")]
-        public Output<string> ImageTarballHash { get; private set; } = null!;
+        public Output<string?> ImageTarballHash { get; private set; } = null!;
 
         /// <summary>
         /// Image tarball thing.
@@ -80,8 +80,8 @@ namespace Pulumi.Containerregistry
         /// <summary>
         /// Hash of the image tarball.
         /// </summary>
-        [Input("imageTarballHash", required: true)]
-        public Input<string> ImageTarballHash { get; set; } = null!;
+        [Input("imageTarballHash")]
+        public Input<string>? ImageTarballHash { get; set; }
 
         /// <summary>
         /// Image tarball thing.

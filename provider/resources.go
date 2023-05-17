@@ -114,6 +114,9 @@ func Provider() tfbridge.ProviderInfo {
 						HashField: "image_tarball_hash",
 					},
 				},
+				"image_tarball_hash": {
+					MarkAsOptional: tfbridge.True(),
+				},
 			},
 			},
 		},

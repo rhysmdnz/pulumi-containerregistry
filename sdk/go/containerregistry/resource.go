@@ -15,7 +15,7 @@ type Resource struct {
 	pulumi.CustomResourceState
 
 	// Hash of the image tarball.
-	ImageTarballHash pulumi.StringOutput `pulumi:"imageTarballHash"`
+	ImageTarballHash pulumi.StringPtrOutput `pulumi:"imageTarballHash"`
 	// Image tarball thing.
 	Image_tarball pulumi.AssetOrArchiveOutput `pulumi:"image_tarball"`
 	// The tag to save the image to.
@@ -29,9 +29,6 @@ func NewResource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ImageTarballHash == nil {
-		return nil, errors.New("invalid value for required argument 'ImageTarballHash'")
-	}
 	if args.Image_tarball == nil {
 		return nil, errors.New("invalid value for required argument 'Image_tarball'")
 	}
@@ -84,7 +81,7 @@ func (ResourceState) ElementType() reflect.Type {
 
 type resourceArgs struct {
 	// Hash of the image tarball.
-	ImageTarballHash string `pulumi:"imageTarballHash"`
+	ImageTarballHash *string `pulumi:"imageTarballHash"`
 	// Image tarball thing.
 	Image_tarball pulumi.AssetOrArchive `pulumi:"image_tarball"`
 	// The tag to save the image to.
@@ -94,7 +91,7 @@ type resourceArgs struct {
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
 	// Hash of the image tarball.
-	ImageTarballHash pulumi.StringInput
+	ImageTarballHash pulumi.StringPtrInput
 	// Image tarball thing.
 	Image_tarball pulumi.AssetOrArchiveInput
 	// The tag to save the image to.
@@ -189,8 +186,8 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 }
 
 // Hash of the image tarball.
-func (o ResourceOutput) ImageTarballHash() pulumi.StringOutput {
-	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.ImageTarballHash }).(pulumi.StringOutput)
+func (o ResourceOutput) ImageTarballHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringPtrOutput { return v.ImageTarballHash }).(pulumi.StringPtrOutput)
 }
 
 // Image tarball thing.

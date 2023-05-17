@@ -14,30 +14,19 @@ __all__ = ['ResourceArgs', 'Resource']
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
-                 image_tarball_hash: pulumi.Input[str],
                  image_tarball: pulumi.Input[Union[pulumi.Asset, pulumi.Archive]],
-                 remote_tag: pulumi.Input[str]):
+                 remote_tag: pulumi.Input[str],
+                 image_tarball_hash: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Resource resource.
-        :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image_tarball: Image tarball thing.
         :param pulumi.Input[str] remote_tag: The tag to save the image to.
+        :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
         """
-        pulumi.set(__self__, "image_tarball_hash", image_tarball_hash)
         pulumi.set(__self__, "image_tarball", image_tarball)
         pulumi.set(__self__, "remote_tag", remote_tag)
-
-    @property
-    @pulumi.getter(name="imageTarballHash")
-    def image_tarball_hash(self) -> pulumi.Input[str]:
-        """
-        Hash of the image tarball.
-        """
-        return pulumi.get(self, "image_tarball_hash")
-
-    @image_tarball_hash.setter
-    def image_tarball_hash(self, value: pulumi.Input[str]):
-        pulumi.set(self, "image_tarball_hash", value)
+        if image_tarball_hash is not None:
+            pulumi.set(__self__, "image_tarball_hash", image_tarball_hash)
 
     @property
     @pulumi.getter
@@ -62,6 +51,18 @@ class ResourceArgs:
     @remote_tag.setter
     def remote_tag(self, value: pulumi.Input[str]):
         pulumi.set(self, "remote_tag", value)
+
+    @property
+    @pulumi.getter(name="imageTarballHash")
+    def image_tarball_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hash of the image tarball.
+        """
+        return pulumi.get(self, "image_tarball_hash")
+
+    @image_tarball_hash.setter
+    def image_tarball_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_tarball_hash", value)
 
 
 @pulumi.input_type
@@ -172,8 +173,6 @@ class Resource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceArgs.__new__(ResourceArgs)
 
-            if image_tarball_hash is None and not opts.urn:
-                raise TypeError("Missing required property 'image_tarball_hash'")
             __props__.__dict__["image_tarball_hash"] = image_tarball_hash
             if image_tarball is None and not opts.urn:
                 raise TypeError("Missing required property 'image_tarball'")
@@ -216,7 +215,7 @@ class Resource(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageTarballHash")
-    def image_tarball_hash(self) -> pulumi.Output[str]:
+    def image_tarball_hash(self) -> pulumi.Output[Optional[str]]:
         """
         Hash of the image tarball.
         """
