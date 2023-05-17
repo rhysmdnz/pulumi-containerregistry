@@ -1706,8 +1706,8 @@ github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9 h1:
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9/go.mod h1:mYPs/uchNcBq7AclQv9QUtSf9iNcfp1Ag21jqTlDf2M=
 github.com/rakyll/embedmd v0.0.0-20171029212350-c8060a0752a2/go.mod h1:7jOTMgqac46PZcF54q6l2hkLEG8op93fZu61KmxWDV4=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
-github.com/rhysmdnz/terraform-provider-containerregistry v0.0.2 h1:JeWWLQZ0ylIZizNILVsRAXqpO+bBs2r/109I89XGEak=
-github.com/rhysmdnz/terraform-provider-containerregistry v0.0.2/go.mod h1:t4k5z03vDrJAZrFJWKTtNHqZrPFdb0AH61VcC8giAn0=
+github.com/rhysmdnz/terraform-provider-containerregistry v0.0.3 h1:xmoilyKA7dziBSTMh6IM+vsdc2U7AU06KgVK6f30BvU=
+github.com/rhysmdnz/terraform-provider-containerregistry v0.0.3/go.mod h1:t4k5z03vDrJAZrFJWKTtNHqZrPFdb0AH61VcC8giAn0=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
