@@ -13,16 +13,16 @@ namespace Pulumi.Containerregistry
     public partial class Resource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Output("imageTarball")]
-        public Output<string> ImageTarball { get; private set; } = null!;
-
-        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Output("imageTarballHash")]
         public Output<string> ImageTarballHash { get; private set; } = null!;
+
+        /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Output("image_tarball")]
+        public Output<AssetOrArchive> Image_tarball { get; private set; } = null!;
 
         /// <summary>
         /// The tag to save the image to.
@@ -53,6 +53,7 @@ namespace Pulumi.Containerregistry
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "https://github.com/rhysmdnz/pulumi-containerregistry/releases/",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -77,16 +78,16 @@ namespace Pulumi.Containerregistry
     public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Input("imageTarball", required: true)]
-        public Input<string> ImageTarball { get; set; } = null!;
-
-        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Input("imageTarballHash", required: true)]
         public Input<string> ImageTarballHash { get; set; } = null!;
+
+        /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Input("image_tarball", required: true)]
+        public Input<AssetOrArchive> Image_tarball { get; set; } = null!;
 
         /// <summary>
         /// The tag to save the image to.
@@ -103,16 +104,16 @@ namespace Pulumi.Containerregistry
     public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Input("imageTarball")]
-        public Input<string>? ImageTarball { get; set; }
-
-        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Input("imageTarballHash")]
         public Input<string>? ImageTarballHash { get; set; }
+
+        /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Input("image_tarball")]
+        public Input<AssetOrArchive>? Image_tarball { get; set; }
 
         /// <summary>
         /// The tag to save the image to.

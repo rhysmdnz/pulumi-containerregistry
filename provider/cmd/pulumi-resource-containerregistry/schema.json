@@ -10,7 +10,8 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`containerregistry` Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry).",
     "repository": "https://github.com/rhysmdnz/pulumi-containerregistry",
-    "publisher": "Pulumi",
+    "pluginDownloadURL": "https://github.com/rhysmdnz/pulumi-containerregistry/releases/",
+    "publisher": "rhysmdnz",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -57,13 +58,13 @@
     "resources": {
         "containerregistry:index/resource:Resource": {
             "properties": {
-                "imageTarball": {
-                    "type": "string",
-                    "description": "Image tarball thing.\n"
-                },
                 "imageTarballHash": {
                     "type": "string",
                     "description": "Hash of the image tarball.\n"
+                },
+                "image_tarball": {
+                    "$ref": "pulumi.json#/Asset",
+                    "description": "Image tarball thing.\n"
                 },
                 "remoteTag": {
                     "type": "string",
@@ -71,19 +72,19 @@
                 }
             },
             "required": [
-                "imageTarball",
+                "image_tarball",
                 "imageTarballHash",
                 "remoteTag"
             ],
             "inputProperties": {
-                "imageTarball": {
-                    "type": "string",
-                    "description": "Image tarball thing.\n",
-                    "willReplaceOnChanges": true
-                },
                 "imageTarballHash": {
                     "type": "string",
                     "description": "Hash of the image tarball.\n",
+                    "willReplaceOnChanges": true
+                },
+                "image_tarball": {
+                    "$ref": "pulumi.json#/Asset",
+                    "description": "Image tarball thing.\n",
                     "willReplaceOnChanges": true
                 },
                 "remoteTag": {
@@ -93,21 +94,21 @@
                 }
             },
             "requiredInputs": [
-                "imageTarball",
+                "image_tarball",
                 "imageTarballHash",
                 "remoteTag"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Resource resources.\n",
                 "properties": {
-                    "imageTarball": {
-                        "type": "string",
-                        "description": "Image tarball thing.\n",
-                        "willReplaceOnChanges": true
-                    },
                     "imageTarballHash": {
                         "type": "string",
                         "description": "Hash of the image tarball.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "image_tarball": {
+                        "$ref": "pulumi.json#/Asset",
+                        "description": "Image tarball thing.\n",
                         "willReplaceOnChanges": true
                     },
                     "remoteTag": {

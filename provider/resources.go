@@ -59,7 +59,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "rhysmdnz",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
+		PluginDownloadURL: "https://github.com/rhysmdnz/pulumi-containerregistry/releases/",
 		Description:       "A Pulumi package for creating and managing containerregistry cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -105,7 +105,17 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"containerregistry_resource": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource")},
+			"containerregistry_resource": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"), Fields: map[string]*tfbridge.SchemaInfo{
+				"image_tarball": {
+					Name: "image_tarball",
+					Asset: &tfbridge.AssetTranslation{
+						Kind: tfbridge.FileAsset,
+						// Format:    resource.ZIPArchive,
+						HashField: "image_tarball_hash",
+					},
+				},
+			},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

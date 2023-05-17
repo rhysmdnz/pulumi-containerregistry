@@ -33,13 +33,13 @@ export class Resource extends pulumi.CustomResource {
     }
 
     /**
-     * Image tarball thing.
-     */
-    public readonly imageTarball!: pulumi.Output<string>;
-    /**
      * Hash of the image tarball.
      */
     public readonly imageTarballHash!: pulumi.Output<string>;
+    /**
+     * Image tarball thing.
+     */
+    public readonly image_tarball!: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * The tag to save the image to.
      */
@@ -58,22 +58,22 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
-            resourceInputs["imageTarball"] = state ? state.imageTarball : undefined;
             resourceInputs["imageTarballHash"] = state ? state.imageTarballHash : undefined;
+            resourceInputs["image_tarball"] = state ? state.image_tarball : undefined;
             resourceInputs["remoteTag"] = state ? state.remoteTag : undefined;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            if ((!args || args.imageTarball === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'imageTarball'");
-            }
             if ((!args || args.imageTarballHash === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageTarballHash'");
+            }
+            if ((!args || args.image_tarball === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'image_tarball'");
             }
             if ((!args || args.remoteTag === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remoteTag'");
             }
-            resourceInputs["imageTarball"] = args ? args.imageTarball : undefined;
             resourceInputs["imageTarballHash"] = args ? args.imageTarballHash : undefined;
+            resourceInputs["image_tarball"] = args ? args.image_tarball : undefined;
             resourceInputs["remoteTag"] = args ? args.remoteTag : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -86,13 +86,13 @@ export class Resource extends pulumi.CustomResource {
  */
 export interface ResourceState {
     /**
-     * Image tarball thing.
-     */
-    imageTarball?: pulumi.Input<string>;
-    /**
      * Hash of the image tarball.
      */
     imageTarballHash?: pulumi.Input<string>;
+    /**
+     * Image tarball thing.
+     */
+    image_tarball?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * The tag to save the image to.
      */
@@ -104,13 +104,13 @@ export interface ResourceState {
  */
 export interface ResourceArgs {
     /**
-     * Image tarball thing.
-     */
-    imageTarball: pulumi.Input<string>;
-    /**
      * Hash of the image tarball.
      */
     imageTarballHash: pulumi.Input<string>;
+    /**
+     * Image tarball thing.
+     */
+    image_tarball: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * The tag to save the image to.
      */

@@ -14,10 +14,10 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	// Image tarball thing.
-	ImageTarball pulumi.StringOutput `pulumi:"imageTarball"`
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringOutput `pulumi:"imageTarballHash"`
+	// Image tarball thing.
+	Image_tarball pulumi.AssetOrArchiveOutput `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag pulumi.StringOutput `pulumi:"remoteTag"`
 }
@@ -29,15 +29,16 @@ func NewResource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ImageTarball == nil {
-		return nil, errors.New("invalid value for required argument 'ImageTarball'")
-	}
 	if args.ImageTarballHash == nil {
 		return nil, errors.New("invalid value for required argument 'ImageTarballHash'")
+	}
+	if args.Image_tarball == nil {
+		return nil, errors.New("invalid value for required argument 'Image_tarball'")
 	}
 	if args.RemoteTag == nil {
 		return nil, errors.New("invalid value for required argument 'RemoteTag'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Resource
 	err := ctx.RegisterResource("containerregistry:index/resource:Resource", name, args, &resource, opts...)
 	if err != nil {
@@ -60,19 +61,19 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	// Image tarball thing.
-	ImageTarball *string `pulumi:"imageTarball"`
 	// Hash of the image tarball.
 	ImageTarballHash *string `pulumi:"imageTarballHash"`
+	// Image tarball thing.
+	Image_tarball pulumi.AssetOrArchive `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag *string `pulumi:"remoteTag"`
 }
 
 type ResourceState struct {
-	// Image tarball thing.
-	ImageTarball pulumi.StringPtrInput
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringPtrInput
+	// Image tarball thing.
+	Image_tarball pulumi.AssetOrArchiveInput
 	// The tag to save the image to.
 	RemoteTag pulumi.StringPtrInput
 }
@@ -82,20 +83,20 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	// Image tarball thing.
-	ImageTarball string `pulumi:"imageTarball"`
 	// Hash of the image tarball.
 	ImageTarballHash string `pulumi:"imageTarballHash"`
+	// Image tarball thing.
+	Image_tarball pulumi.AssetOrArchive `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag string `pulumi:"remoteTag"`
 }
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	// Image tarball thing.
-	ImageTarball pulumi.StringInput
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringInput
+	// Image tarball thing.
+	Image_tarball pulumi.AssetOrArchiveInput
 	// The tag to save the image to.
 	RemoteTag pulumi.StringInput
 }
@@ -187,14 +188,14 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
-// Image tarball thing.
-func (o ResourceOutput) ImageTarball() pulumi.StringOutput {
-	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.ImageTarball }).(pulumi.StringOutput)
-}
-
 // Hash of the image tarball.
 func (o ResourceOutput) ImageTarballHash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.ImageTarballHash }).(pulumi.StringOutput)
+}
+
+// Image tarball thing.
+func (o ResourceOutput) Image_tarball() pulumi.AssetOrArchiveOutput {
+	return o.ApplyT(func(v *Resource) pulumi.AssetOrArchiveOutput { return v.Image_tarball }).(pulumi.AssetOrArchiveOutput)
 }
 
 // The tag to save the image to.

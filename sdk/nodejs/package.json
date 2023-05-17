@@ -24,6 +24,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "containerregistry"
+        "name": "containerregistry",
+        "server": "https://github.com/rhysmdnz/pulumi-containerregistry/releases/"
     }
 }

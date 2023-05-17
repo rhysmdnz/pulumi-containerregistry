@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'containerregistry', PLUGIN_VERSION])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'containerregistry', PLUGIN_VERSION, '--server', 'https://github.com/rhysmdnz/pulumi-containerregistry/releases/'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
