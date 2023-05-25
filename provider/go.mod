@@ -5,7 +5,7 @@ go 1.18
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.4
 	github.com/pulumi/pulumi/sdk/v3 v3.66.0
 	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.4
 )
@@ -182,9 +182,9 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.2 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.3 // indirect
+	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.64.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.66.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
