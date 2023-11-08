@@ -148,7 +148,7 @@ func Provider() tfbridge.ProviderInfo {
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/rhysmdnz/pulumi-%[1]s/sdk/", mainPkg),
-				tfbridge.GetModuleMajorVersion(version.Version),
+				//tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
 			),
