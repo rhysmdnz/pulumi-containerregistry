@@ -13,16 +13,16 @@ namespace Pulumi.Containerregistry
     public partial class Resource : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Output("image")]
+        public Output<AssetOrArchive> Image { get; private set; } = null!;
+
+        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Output("imageTarballHash")]
         public Output<string?> ImageTarballHash { get; private set; } = null!;
-
-        /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Output("image_tarball")]
-        public Output<AssetOrArchive> Image_tarball { get; private set; } = null!;
 
         /// <summary>
         /// The tag to save the image to.
@@ -78,16 +78,16 @@ namespace Pulumi.Containerregistry
     public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Input("image", required: true)]
+        public Input<AssetOrArchive> Image { get; set; } = null!;
+
+        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Input("imageTarballHash")]
         public Input<string>? ImageTarballHash { get; set; }
-
-        /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Input("image_tarball", required: true)]
-        public Input<AssetOrArchive> Image_tarball { get; set; } = null!;
 
         /// <summary>
         /// The tag to save the image to.
@@ -104,16 +104,16 @@ namespace Pulumi.Containerregistry
     public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Image tarball thing.
+        /// </summary>
+        [Input("image")]
+        public Input<AssetOrArchive>? Image { get; set; }
+
+        /// <summary>
         /// Hash of the image tarball.
         /// </summary>
         [Input("imageTarballHash")]
         public Input<string>? ImageTarballHash { get; set; }
-
-        /// <summary>
-        /// Image tarball thing.
-        /// </summary>
-        [Input("image_tarball")]
-        public Input<AssetOrArchive>? Image_tarball { get; set; }
 
         /// <summary>
         /// The tag to save the image to.

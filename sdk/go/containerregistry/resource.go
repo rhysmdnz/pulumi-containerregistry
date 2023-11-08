@@ -9,15 +9,17 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/rhysmdnz/pulumi-containerregistry/sdk/go/containerregistry/internal"
 )
 
 type Resource struct {
 	pulumi.CustomResourceState
 
+	// Image tarball thing.
+	Image pulumi.AssetOrArchiveOutput `pulumi:"image"`
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringPtrOutput `pulumi:"imageTarballHash"`
-	// Image tarball thing.
-	Image_tarball pulumi.AssetOrArchiveOutput `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag pulumi.StringOutput `pulumi:"remoteTag"`
 }
@@ -29,13 +31,13 @@ func NewResource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Image_tarball == nil {
-		return nil, errors.New("invalid value for required argument 'Image_tarball'")
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
 	}
 	if args.RemoteTag == nil {
 		return nil, errors.New("invalid value for required argument 'RemoteTag'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Resource
 	err := ctx.RegisterResource("containerregistry:index/resource:Resource", name, args, &resource, opts...)
 	if err != nil {
@@ -58,19 +60,19 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
+	// Image tarball thing.
+	Image pulumi.AssetOrArchive `pulumi:"image"`
 	// Hash of the image tarball.
 	ImageTarballHash *string `pulumi:"imageTarballHash"`
-	// Image tarball thing.
-	Image_tarball pulumi.AssetOrArchive `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag *string `pulumi:"remoteTag"`
 }
 
 type ResourceState struct {
+	// Image tarball thing.
+	Image pulumi.AssetOrArchiveInput
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringPtrInput
-	// Image tarball thing.
-	Image_tarball pulumi.AssetOrArchiveInput
 	// The tag to save the image to.
 	RemoteTag pulumi.StringPtrInput
 }
@@ -80,20 +82,20 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
+	// Image tarball thing.
+	Image pulumi.AssetOrArchive `pulumi:"image"`
 	// Hash of the image tarball.
 	ImageTarballHash *string `pulumi:"imageTarballHash"`
-	// Image tarball thing.
-	Image_tarball pulumi.AssetOrArchive `pulumi:"image_tarball"`
 	// The tag to save the image to.
 	RemoteTag string `pulumi:"remoteTag"`
 }
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
+	// Image tarball thing.
+	Image pulumi.AssetOrArchiveInput
 	// Hash of the image tarball.
 	ImageTarballHash pulumi.StringPtrInput
-	// Image tarball thing.
-	Image_tarball pulumi.AssetOrArchiveInput
 	// The tag to save the image to.
 	RemoteTag pulumi.StringInput
 }
@@ -121,6 +123,12 @@ func (i *Resource) ToResourceOutputWithContext(ctx context.Context) ResourceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOutput)
 }
 
+func (i *Resource) ToOutput(ctx context.Context) pulumix.Output[*Resource] {
+	return pulumix.Output[*Resource]{
+		OutputState: i.ToResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceArrayInput is an input type that accepts ResourceArray and ResourceArrayOutput values.
 // You can construct a concrete instance of `ResourceArrayInput` via:
 //
@@ -144,6 +152,12 @@ func (i ResourceArray) ToResourceArrayOutput() ResourceArrayOutput {
 
 func (i ResourceArray) ToResourceArrayOutputWithContext(ctx context.Context) ResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceArrayOutput)
+}
+
+func (i ResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Resource] {
+	return pulumix.Output[[]*Resource]{
+		OutputState: i.ToResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ResourceMapInput is an input type that accepts ResourceMap and ResourceMapOutput values.
@@ -171,6 +185,12 @@ func (i ResourceMap) ToResourceMapOutputWithContext(ctx context.Context) Resourc
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMapOutput)
 }
 
+func (i ResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Resource] {
+	return pulumix.Output[map[string]*Resource]{
+		OutputState: i.ToResourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceOutput struct{ *pulumi.OutputState }
 
 func (ResourceOutput) ElementType() reflect.Type {
@@ -185,14 +205,20 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
-// Hash of the image tarball.
-func (o ResourceOutput) ImageTarballHash() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Resource) pulumi.StringPtrOutput { return v.ImageTarballHash }).(pulumi.StringPtrOutput)
+func (o ResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*Resource] {
+	return pulumix.Output[*Resource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image tarball thing.
-func (o ResourceOutput) Image_tarball() pulumi.AssetOrArchiveOutput {
-	return o.ApplyT(func(v *Resource) pulumi.AssetOrArchiveOutput { return v.Image_tarball }).(pulumi.AssetOrArchiveOutput)
+func (o ResourceOutput) Image() pulumi.AssetOrArchiveOutput {
+	return o.ApplyT(func(v *Resource) pulumi.AssetOrArchiveOutput { return v.Image }).(pulumi.AssetOrArchiveOutput)
+}
+
+// Hash of the image tarball.
+func (o ResourceOutput) ImageTarballHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringPtrOutput { return v.ImageTarballHash }).(pulumi.StringPtrOutput)
 }
 
 // The tag to save the image to.
@@ -214,6 +240,12 @@ func (o ResourceArrayOutput) ToResourceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Resource] {
+	return pulumix.Output[[]*Resource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceArrayOutput) Index(i pulumi.IntInput) ResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Resource {
 		return vs[0].([]*Resource)[vs[1].(int)]
@@ -232,6 +264,12 @@ func (o ResourceMapOutput) ToResourceMapOutput() ResourceMapOutput {
 
 func (o ResourceMapOutput) ToResourceMapOutputWithContext(ctx context.Context) ResourceMapOutput {
 	return o
+}
+
+func (o ResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Resource] {
+	return pulumix.Output[map[string]*Resource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMapOutput) MapIndex(k pulumi.StringInput) ResourceOutput {

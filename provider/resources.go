@@ -107,16 +107,16 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 			"containerregistry_resource": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"), Fields: map[string]*tfbridge.SchemaInfo{
 				"image_tarball": {
-					Name: "image_tarball",
+					Name: "image",
 					Asset: &tfbridge.AssetTranslation{
 						Kind: tfbridge.FileAsset,
-						// Format:    resource.ZIPArchive,
+						//Format:    resource.TarArchive,
 						HashField: "image_tarball_hash",
 					},
 				},
-				"image_tarball_hash": {
-					MarkAsOptional: tfbridge.True(),
-				},
+				//"image_tarball_hash": {
+				//	MarkAsOptional: tfbridge.True(),
+				//},
 			},
 			},
 		},
@@ -147,7 +147,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/rhysmdnz/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,

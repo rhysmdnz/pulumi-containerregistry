@@ -17,19 +17,19 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
-            }
+            },
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/rhysmdnz/pulumi-containerregistry/sdk/go/containerregistry",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-containerregistry/sdk/go/containerregistry"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing containerregistry cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -37,18 +37,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing containerregistry cloud resources.",
-            "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {},
@@ -58,13 +56,13 @@
     "resources": {
         "containerregistry:index/resource:Resource": {
             "properties": {
+                "image": {
+                    "$ref": "pulumi.json#/Asset",
+                    "description": "Image tarball thing.\n"
+                },
                 "imageTarballHash": {
                     "type": "string",
                     "description": "Hash of the image tarball.\n"
-                },
-                "image_tarball": {
-                    "$ref": "pulumi.json#/Asset",
-                    "description": "Image tarball thing.\n"
                 },
                 "remoteTag": {
                     "type": "string",
@@ -72,18 +70,18 @@
                 }
             },
             "required": [
-                "image_tarball",
+                "image",
                 "remoteTag"
             ],
             "inputProperties": {
+                "image": {
+                    "$ref": "pulumi.json#/Asset",
+                    "description": "Image tarball thing.\n",
+                    "willReplaceOnChanges": true
+                },
                 "imageTarballHash": {
                     "type": "string",
                     "description": "Hash of the image tarball.\n",
-                    "willReplaceOnChanges": true
-                },
-                "image_tarball": {
-                    "$ref": "pulumi.json#/Asset",
-                    "description": "Image tarball thing.\n",
                     "willReplaceOnChanges": true
                 },
                 "remoteTag": {
@@ -93,20 +91,20 @@
                 }
             },
             "requiredInputs": [
-                "image_tarball",
+                "image",
                 "remoteTag"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Resource resources.\n",
                 "properties": {
+                    "image": {
+                        "$ref": "pulumi.json#/Asset",
+                        "description": "Image tarball thing.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "imageTarballHash": {
                         "type": "string",
                         "description": "Hash of the image tarball.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "image_tarball": {
-                        "$ref": "pulumi.json#/Asset",
-                        "description": "Image tarball thing.\n",
                         "willReplaceOnChanges": true
                     },
                     "remoteTag": {

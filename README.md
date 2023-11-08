@@ -370,7 +370,7 @@ builds:
   - linux
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-containerregistry/provider/pkg/version.Version={{.Tag}}
+  - -X github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-containerregistry/
   sort: asc
   use: git

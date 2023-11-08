@@ -14,31 +14,31 @@ __all__ = ['ResourceArgs', 'Resource']
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
-                 image_tarball: pulumi.Input[Union[pulumi.Asset, pulumi.Archive]],
+                 image: pulumi.Input[Union[pulumi.Asset, pulumi.Archive]],
                  remote_tag: pulumi.Input[str],
                  image_tarball_hash: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Resource resource.
-        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image_tarball: Image tarball thing.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image: Image tarball thing.
         :param pulumi.Input[str] remote_tag: The tag to save the image to.
         :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
         """
-        pulumi.set(__self__, "image_tarball", image_tarball)
+        pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "remote_tag", remote_tag)
         if image_tarball_hash is not None:
             pulumi.set(__self__, "image_tarball_hash", image_tarball_hash)
 
     @property
     @pulumi.getter
-    def image_tarball(self) -> pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]:
+    def image(self) -> pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]:
         """
         Image tarball thing.
         """
-        return pulumi.get(self, "image_tarball")
+        return pulumi.get(self, "image")
 
-    @image_tarball.setter
-    def image_tarball(self, value: pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]):
-        pulumi.set(self, "image_tarball", value)
+    @image.setter
+    def image(self, value: pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]):
+        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="remoteTag")
@@ -68,21 +68,33 @@ class ResourceArgs:
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
+                 image: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  image_tarball_hash: Optional[pulumi.Input[str]] = None,
-                 image_tarball: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  remote_tag: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image: Image tarball thing.
         :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
-        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image_tarball: Image tarball thing.
         :param pulumi.Input[str] remote_tag: The tag to save the image to.
         """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if image_tarball_hash is not None:
             pulumi.set(__self__, "image_tarball_hash", image_tarball_hash)
-        if image_tarball is not None:
-            pulumi.set(__self__, "image_tarball", image_tarball)
         if remote_tag is not None:
             pulumi.set(__self__, "remote_tag", remote_tag)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+        """
+        Image tarball thing.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="imageTarballHash")
@@ -95,18 +107,6 @@ class _ResourceState:
     @image_tarball_hash.setter
     def image_tarball_hash(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_tarball_hash", value)
-
-    @property
-    @pulumi.getter
-    def image_tarball(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
-        """
-        Image tarball thing.
-        """
-        return pulumi.get(self, "image_tarball")
-
-    @image_tarball.setter
-    def image_tarball(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
-        pulumi.set(self, "image_tarball", value)
 
     @property
     @pulumi.getter(name="remoteTag")
@@ -126,16 +126,16 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 image: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  image_tarball_hash: Optional[pulumi.Input[str]] = None,
-                 image_tarball: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  remote_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Resource resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image: Image tarball thing.
         :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
-        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image_tarball: Image tarball thing.
         :param pulumi.Input[str] remote_tag: The tag to save the image to.
         """
         ...
@@ -161,8 +161,8 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 image: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  image_tarball_hash: Optional[pulumi.Input[str]] = None,
-                 image_tarball: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  remote_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -173,10 +173,10 @@ class Resource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceArgs.__new__(ResourceArgs)
 
+            if image is None and not opts.urn:
+                raise TypeError("Missing required property 'image'")
+            __props__.__dict__["image"] = image
             __props__.__dict__["image_tarball_hash"] = image_tarball_hash
-            if image_tarball is None and not opts.urn:
-                raise TypeError("Missing required property 'image_tarball'")
-            __props__.__dict__["image_tarball"] = image_tarball
             if remote_tag is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_tag'")
             __props__.__dict__["remote_tag"] = remote_tag
@@ -190,8 +190,8 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            image: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
             image_tarball_hash: Optional[pulumi.Input[str]] = None,
-            image_tarball: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
             remote_tag: Optional[pulumi.Input[str]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
@@ -200,18 +200,26 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image: Image tarball thing.
         :param pulumi.Input[str] image_tarball_hash: Hash of the image tarball.
-        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] image_tarball: Image tarball thing.
         :param pulumi.Input[str] remote_tag: The tag to save the image to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ResourceState.__new__(_ResourceState)
 
+        __props__.__dict__["image"] = image
         __props__.__dict__["image_tarball_hash"] = image_tarball_hash
-        __props__.__dict__["image_tarball"] = image_tarball
         __props__.__dict__["remote_tag"] = remote_tag
         return Resource(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Output[Union[pulumi.Asset, pulumi.Archive]]:
+        """
+        Image tarball thing.
+        """
+        return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="imageTarballHash")
@@ -220,14 +228,6 @@ class Resource(pulumi.CustomResource):
         Hash of the image tarball.
         """
         return pulumi.get(self, "image_tarball_hash")
-
-    @property
-    @pulumi.getter
-    def image_tarball(self) -> pulumi.Output[Union[pulumi.Asset, pulumi.Archive]]:
-        """
-        Image tarball thing.
-        """
-        return pulumi.get(self, "image_tarball")
 
     @property
     @pulumi.getter(name="remoteTag")
