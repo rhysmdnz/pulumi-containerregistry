@@ -1,6 +1,6 @@
 module github.com/rhysmdnz/pulumi-containerregistry/sdk
 
-go 1.18
+go 1.22
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

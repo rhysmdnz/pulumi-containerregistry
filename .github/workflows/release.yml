@@ -40,7 +40,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{matrix.goversion}}
+          go-version-file: "provider/go.mod"
           cache-dependency-path: |
             provider/go.sum
             sdk/go.sum
@@ -55,11 +55,6 @@ jobs:
         with:
           args: -p 3 release --clean
           version: latest
-    strategy:
-      fail-fast: true
-      matrix:
-        goversion:
-          - 1.20.x
   publish_sdk:
     name: Publish SDKs
     runs-on: ubuntu-latest
@@ -75,7 +70,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{ matrix.goversion }}
+          go-version-file: "provider/go.mod"
           cache-dependency-path: |
             provider/go.sum
             sdk/go.sum
@@ -130,8 +125,6 @@ jobs:
       matrix:
         dotnetversion:
           - 3.1.301
-        goversion:
-          - 1.20.x
         language:
           - nodejs
           - python

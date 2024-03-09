@@ -1,6 +1,6 @@
 module github.com/rhysmdnz/pulumi-containerregistry/provider
 
-go 1.18
+go 1.22
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
