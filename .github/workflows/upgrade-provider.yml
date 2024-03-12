@@ -13,6 +13,11 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+      with:
+        fetch-tags: true
+        fetch-depth: 0
     - name: Install Go
       uses: actions/setup-go@v3
       with:
