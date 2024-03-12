@@ -13,5 +13,9 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
+    - name: Install Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.21.x
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@main
