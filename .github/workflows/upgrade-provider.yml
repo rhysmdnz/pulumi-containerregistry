@@ -15,11 +15,12 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
     steps:
       - name: Call upgrade provider action
         uses: pulumi/pulumi-upgrade-provider-action@main
         env:
           GH_DEBUG: "api"
         with:
-          username: "rhysmdnz"
+          username: "github-actions[bot]"
           email: "41898282+github-actions[bot]@users.noreply.github.com"
