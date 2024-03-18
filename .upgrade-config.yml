@@ -1,2 +1,3 @@
-  upstream-provider-name: terraform-provider-containerregistry
-  upstream-provider-org: rhysmdnz
+upstream-provider-name: terraform-provider-containerregistry
+upstream-provider-org: rhysmdnz
+pr-assign: rhysmdnz
