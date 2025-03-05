@@ -53,6 +53,7 @@ publishRegistry: false
 
 toolVersions:
   pulumictl: "v0.0.48"
+  go: "1.24.x"
 
 license:
   ignore:
