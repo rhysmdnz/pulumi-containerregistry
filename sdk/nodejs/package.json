@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/containerregistry",
+    "name": "pulumi-containerregistry",
     "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing containerregistry cloud resources.",
     "keywords": [
