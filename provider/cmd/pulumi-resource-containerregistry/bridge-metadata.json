@@ -1,0 +1,11 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "containerregistry_resource": {
+                "current": "containerregistry:index/resource:Resource",
+                "majorVersion": 1
+            }
+        }
+    },
+    "auto-settings": {}
+}

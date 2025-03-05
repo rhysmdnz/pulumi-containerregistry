@@ -2,7 +2,6 @@
     "name": "containerregistry",
     "description": "A Pulumi package for creating and managing containerregistry cloud resources.",
     "keywords": [
-        "pulumi",
         "containerregistry",
         "category/cloud"
     ],
@@ -20,32 +19,26 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "compatibility": "tfbridge20"
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true
         },
         "go": {
             "importBasePath": "github.com/rhysmdnz/pulumi-containerregistry/sdk/go/containerregistry",
             "generateResourceContainerTypes": true,
-            "generateExtraInputTypes": true
+            "generateExtraInputTypes": true,
+            "respectSchemaVersion": true
         },
         "nodejs": {
             "packageDescription": "A Pulumi package for creating and managing containerregistry cloud resources.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
-            "dependencies": {
-                "@pulumi/pulumi": "^3.0.0"
-            },
-            "devDependencies": {
-                "@types/mime": "^2.0.0",
-                "@types/node": "^10.0.0"
-            },
             "compatibility": "tfbridge20",
-            "disableUnionOutputTypes": true
+            "disableUnionOutputTypes": true,
+            "respectSchemaVersion": true
         },
         "python": {
-            "requires": {
-                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            },
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rhysmdnz/terraform-provider-containerregistry)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-containerregistry` repo](https://github.com/rhysmdnz/pulumi-containerregistry/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-containerregistry` repo](https://github.com/rhysmdnz/terraform-provider-containerregistry/issues).",
             "compatibility": "tfbridge20",
+            "respectSchemaVersion": true,
             "pyproject": {
                 "enabled": true
             }
