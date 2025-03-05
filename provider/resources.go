@@ -20,11 +20,12 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	"github.com/rhysmdnz/terraform-provider-containerregistry/shim"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"github.com/rhysmdnz/terraform-provider-containerregistry/shim"
 
 	"github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version"
 )
