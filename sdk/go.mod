@@ -2,7 +2,7 @@ module github.com/rhysmdnz/pulumi-containerregistry/sdk
 
 go 1.22
 
-toolchain go1.22.11
+toolchain go1.24.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
