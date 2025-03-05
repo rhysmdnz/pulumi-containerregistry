@@ -15,18 +15,18 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	containerregistry "github.com/rhysmdnz/pulumi-containerregistry/provider"
-	"github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version"
 )
 
 //go:embed schema.json
 var pulumiSchema []byte
 
 func main() {
-	// Modify the path to point to the new provider
-	tfbridge.Main("containerregistry", version.Version, containerregistry.Provider(), pulumiSchema)
+	tfbridge.Main(context.Background(), "containerregistry", containerregistry.Provider(),
+		tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }

@@ -53,3 +53,7 @@ publishRegistry: false
 
 toolVersions:
   pulumictl: "v0.0.48"
+
+license:
+  ignore:
+    - github.com/rhysmdnz/terraform-provider-containerregistry/shim

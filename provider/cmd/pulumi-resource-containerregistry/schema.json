@@ -72,18 +72,15 @@
             "inputProperties": {
                 "image": {
                     "$ref": "pulumi.json#/Asset",
-                    "description": "Image tarball thing.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Image tarball thing.\n"
                 },
                 "imageTarballHash": {
                     "type": "string",
-                    "description": "Hash of the image tarball.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Hash of the image tarball.\n"
                 },
                 "remoteTag": {
                     "type": "string",
-                    "description": "The tag to save the image to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The tag to save the image to.\n"
                 }
             },
             "requiredInputs": [
@@ -95,18 +92,15 @@
                 "properties": {
                     "image": {
                         "$ref": "pulumi.json#/Asset",
-                        "description": "Image tarball thing.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Image tarball thing.\n"
                     },
                     "imageTarballHash": {
                         "type": "string",
-                        "description": "Hash of the image tarball.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Hash of the image tarball.\n"
                     },
                     "remoteTag": {
                         "type": "string",
-                        "description": "The tag to save the image to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The tag to save the image to.\n"
                     }
                 },
                 "type": "object"

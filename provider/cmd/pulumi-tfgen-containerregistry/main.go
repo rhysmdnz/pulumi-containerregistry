@@ -15,13 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	containerregistry "github.com/rhysmdnz/pulumi-containerregistry/provider"
-	"github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("containerregistry", version.Version, containerregistry.Provider())
+	tfgen.Main("containerregistry", containerregistry.Provider())
 }

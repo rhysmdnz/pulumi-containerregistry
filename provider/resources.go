@@ -20,12 +20,11 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
-	containerregistry "github.com/rhysmdnz/terraform-provider-containerregistry/provider" // Import the upstream provider
-
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/rhysmdnz/terraform-provider-containerregistry/shim"
 
 	"github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version"
 )
@@ -106,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(containerregistry.New(version.Version)()),
+		P: pfbridge.ShimProvider(shim.NewProvider(version.Version)),
 
 		Name:    "containerregistry",
 		Version: version.Version,
