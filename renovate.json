@@ -4,5 +4,7 @@
     "config:recommended"
   ],
   "enabledManagers": ["gomod"],
-  "ignorePaths": ["**/sdk/*/**"]
+  "ignorePaths": ["**/sdk/*/**"],
+  "rebaseWhen": "behind-base-branch",
+  "lockFileMaintenance": { "enabled": true }
 }
