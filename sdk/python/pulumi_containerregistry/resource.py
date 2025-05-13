@@ -127,6 +127,7 @@ class _ResourceState:
         pulumi.set(self, "remote_tag", value)
 
 
+@pulumi.type_token("containerregistry:index/resource:Resource")
 class Resource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
