@@ -7,8 +7,8 @@ toolchain go1.24.3
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250221232320-8d4cfd37a3cd
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.108.1-0.20250515235204-ad62d4be0b93
-	github.com/pulumi/pulumi/pkg/v3 v3.170.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.108.1-0.20250523131636-640b79938190
+	github.com/pulumi/pulumi/pkg/v3 v3.171.0
 	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.11
 )
 
@@ -151,9 +151,9 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.14.2 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v1.11.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.19.1-0.20250515165432-2144799846ab // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.170.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.12.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.19.1 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.171.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.11 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
