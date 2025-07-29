@@ -2,7 +2,7 @@ module github.com/rhysmdnz/terraform-provider-containerregistry/shim
 
 go 1.23.0
 
-toolchain go1.24.4
+toolchain go1.24.5
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.15.0
