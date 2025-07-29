@@ -9,7 +9,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.108.1-0.20250515235204-ad62d4be0b93
 	github.com/pulumi/pulumi/pkg/v3 v3.170.0
-	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.11
+	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.12
 )
 
 replace github.com/rhysmdnz/terraform-provider-containerregistry/shim => ./shim
