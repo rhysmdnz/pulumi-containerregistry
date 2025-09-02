@@ -6,7 +6,7 @@ toolchain go1.24.6
 
 require (
 	github.com/pulumi/pulumi/pkg/v3 v3.187.0
-	github.com/stretchr/testify v1.11.0
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
