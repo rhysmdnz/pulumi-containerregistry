@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Sample resource in the Terraform provider containerregistry.
+ */
 export class Resource extends pulumi.CustomResource {
     /**
      * Get an existing Resource resource's state with the given name, ID, and optional extra
@@ -85,15 +88,15 @@ export interface ResourceState {
     /**
      * Image tarball thing.
      */
-    image?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    image?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
      * Hash of the image tarball.
      */
-    imageTarballHash?: pulumi.Input<string>;
+    imageTarballHash?: pulumi.Input<string | undefined>;
     /**
      * The tag to save the image to.
      */
-    remoteTag?: pulumi.Input<string>;
+    remoteTag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -107,7 +110,7 @@ export interface ResourceArgs {
     /**
      * Hash of the image tarball.
      */
-    imageTarballHash?: pulumi.Input<string>;
+    imageTarballHash?: pulumi.Input<string | undefined>;
     /**
      * The tag to save the image to.
      */

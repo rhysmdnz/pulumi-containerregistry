@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Containerregistry
 {
+    /// <summary>
+    /// Sample resource in the Terraform provider containerregistry.
+    /// </summary>
     [ContainerregistryResourceType("containerregistry:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource
     {

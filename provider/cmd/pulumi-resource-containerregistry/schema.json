@@ -54,6 +54,7 @@
     },
     "resources": {
         "containerregistry:index/resource:Resource": {
+            "description": "Sample resource in the Terraform provider containerregistry.\n",
             "properties": {
                 "image": {
                     "$ref": "pulumi.json#/Asset",
