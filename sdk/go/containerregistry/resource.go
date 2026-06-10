@@ -12,6 +12,7 @@ import (
 	"github.com/rhysmdnz/pulumi-containerregistry/sdk/go/containerregistry/internal"
 )
 
+// Sample resource in the Terraform provider containerregistry.
 type Resource struct {
 	pulumi.CustomResourceState
 

@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Sample resource in the Terraform provider containerregistry.
+ */
 export class Resource extends pulumi.CustomResource {
     /**
      * Get an existing Resource resource's state with the given name, ID, and optional extra

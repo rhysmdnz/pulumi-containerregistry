@@ -139,7 +139,8 @@ class Resource(pulumi.CustomResource):
                  remote_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Resource resource with the given unique name, props, and options.
+        Sample resource in the Terraform provider containerregistry.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,7 +155,8 @@ class Resource(pulumi.CustomResource):
                  args: ResourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Resource resource with the given unique name, props, and options.
+        Sample resource in the Terraform provider containerregistry.
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.
