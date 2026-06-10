@@ -85,15 +85,15 @@ export interface ResourceState {
     /**
      * Image tarball thing.
      */
-    image?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    image?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
      * Hash of the image tarball.
      */
-    imageTarballHash?: pulumi.Input<string>;
+    imageTarballHash?: pulumi.Input<string | undefined>;
     /**
      * The tag to save the image to.
      */
-    remoteTag?: pulumi.Input<string>;
+    remoteTag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface ResourceArgs {
     /**
      * Hash of the image tarball.
      */
-    imageTarballHash?: pulumi.Input<string>;
+    imageTarballHash?: pulumi.Input<string | undefined>;
     /**
      * The tag to save the image to.
      */
