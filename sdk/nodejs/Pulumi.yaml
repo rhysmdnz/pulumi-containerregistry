@@ -1,3 +1,0 @@
-name: containerregistry
-description: A Pulumi resource provider for containerregistry.
-language: nodejs
