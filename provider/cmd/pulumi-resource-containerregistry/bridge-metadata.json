@@ -7,5 +7,10 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "containerregistry_resource": {}
+        }
+    }
 }
