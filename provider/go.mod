@@ -2,7 +2,7 @@ module github.com/rhysmdnz/pulumi-containerregistry/provider
 
 go 1.25.9
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 717b4eff435b
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
