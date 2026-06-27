@@ -15,6 +15,8 @@
 package containerregistry
 
 import (
+	"context"
+	"fmt"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
@@ -26,6 +28,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/rhysmdnz/pulumi-containerregistry/provider/pkg/version"
 )
@@ -159,7 +162,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"containerregistry_resource": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"), Fields: map[string]*tfbridge.SchemaInfo{
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"),
+				Fields: map[string]*tfbridge.SchemaInfo{
 					"image_tarball": {
 						Name: "image",
 						Asset: &tfbridge.AssetTranslation{
@@ -167,6 +171,37 @@ func Provider() tfbridge.ProviderInfo {
 							HashField: "image_tarball_hash",
 						},
 					},
+				},
+				PreCheckCallback: func(_ context.Context, inputs resource.PropertyMap,
+					_ resource.PropertyMap) (resource.PropertyMap, error) {
+					imageKey := resource.PropertyKey("image")
+					if imageVal, ok := inputs[imageKey]; ok && imageVal.IsAsset() {
+						asset := imageVal.AssetValue()
+						var pathString string
+						if asset.Path != "" {
+							pathString = asset.Path
+						} else {
+							at := &tfbridge.AssetTranslation{
+								Kind: tfbridge.FileAsset,
+							}
+							translated, err := at.TranslateAsset(asset)
+							if err != nil {
+								return nil, err
+							}
+							var ok bool
+							pathString, ok = translated.(string)
+							if !ok {
+								return nil, fmt.Errorf("unexpected translation result for asset: %v", translated)
+							}
+						}
+						inputs[imageKey] = resource.NewStringProperty(pathString)
+
+						if asset.Hash != "" {
+							hashKey := resource.PropertyKey("imageTarballHash")
+							inputs[hashKey] = resource.NewStringProperty(asset.Hash)
+						}
+					}
+					return inputs, nil
 				},
 			},
 		},
