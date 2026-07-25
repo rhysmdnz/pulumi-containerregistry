@@ -7,6 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/pkg/v3 v3.246.0
+	github.com/pulumi/pulumi/sdk/v3 v3.246.0
 	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.13
 )
 
@@ -180,7 +181,6 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.107.1 // indirect
 	github.com/pulumi/pulumi-java v1.30.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.36.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.246.0 // indirect
 	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.13 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.15.0 // indirect
@@ -245,7 +245,7 @@ require (
 	google.golang.org/genproto v0.0.0-20260608224507-4308a22a1bab // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad // indirect
-	google.golang.org/grpc v1.81.1 // indirect
+	google.golang.org/grpc v1.82.1 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
