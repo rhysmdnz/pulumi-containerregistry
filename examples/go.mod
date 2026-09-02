@@ -2,7 +2,7 @@ module github.com/rhysmdnz/pulumi-containerregistry/examples
 
 go 1.25.8
 
-toolchain go1.26.4
+toolchain go1.27.1
 
 require (
 	github.com/pulumi/pulumi/pkg/v3 v3.246.0
