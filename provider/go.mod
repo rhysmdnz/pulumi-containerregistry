@@ -8,7 +8,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/pkg/v3 v3.246.0
 	github.com/pulumi/pulumi/sdk/v3 v3.246.0
-	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.13
+	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.14
 )
 
 replace github.com/rhysmdnz/terraform-provider-containerregistry/shim => ./shim
