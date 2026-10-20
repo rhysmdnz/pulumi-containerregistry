@@ -4,7 +4,7 @@ go 1.25.8
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
-	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.14
+	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.15
 )
 
 require (

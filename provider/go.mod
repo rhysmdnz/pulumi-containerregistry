@@ -178,7 +178,7 @@ require (
 	github.com/pulumi/pulumi-hcl v0.18.5 // indirect
 	github.com/pulumi/pulumi-java v1.37.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.38.10 // indirect
-	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.14 // indirect
+	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.15 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.15.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
