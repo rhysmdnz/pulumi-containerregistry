@@ -174,34 +174,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				PreCheckCallback: func(_ context.Context, inputs resource.PropertyMap,
 					_ resource.PropertyMap) (resource.PropertyMap, error) {
-					imageKey := resource.PropertyKey("image")
-					if imageVal, ok := inputs[imageKey]; ok && imageVal.IsAsset() {
-						asset := imageVal.AssetValue()
-						var pathString string
-						if asset.Path != "" {
-							pathString = asset.Path
-						} else {
-							at := &tfbridge.AssetTranslation{
-								Kind: tfbridge.FileAsset,
-							}
-							translated, err := at.TranslateAsset(asset)
-							if err != nil {
-								return nil, err
-							}
-							var ok bool
-							pathString, ok = translated.(string)
-							if !ok {
-								return nil, fmt.Errorf("unexpected translation result for asset: %v", translated)
-							}
-						}
-						inputs[imageKey] = resource.NewStringProperty(pathString)
-
-						if asset.Hash != "" {
-							hashKey := resource.PropertyKey("imageTarballHash")
-							inputs[hashKey] = resource.NewStringProperty(asset.Hash)
-						}
-					}
-					return inputs, nil
+					return imageAssetToPath(inputs)
+				},
+				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+					return imageAssetToPath(state)
 				},
 			},
 		},
@@ -253,4 +229,35 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func imageAssetToPath(inputs resource.PropertyMap) (resource.PropertyMap, error) {
+	imageKey := resource.PropertyKey("image")
+	if imageVal, ok := inputs[imageKey]; ok && imageVal.IsAsset() {
+		asset := imageVal.AssetValue()
+		var pathString string
+		if asset.Path != "" {
+			pathString = asset.Path
+		} else {
+			at := &tfbridge.AssetTranslation{
+				Kind: tfbridge.FileAsset,
+			}
+			translated, err := at.TranslateAsset(asset)
+			if err != nil {
+				return nil, err
+			}
+			var ok bool
+			pathString, ok = translated.(string)
+			if !ok {
+				return nil, fmt.Errorf("unexpected translation result for asset: %v", translated)
+			}
+		}
+		inputs[imageKey] = resource.NewStringProperty(pathString)
+
+		if asset.Hash != "" {
+			hashKey := resource.PropertyKey("imageTarballHash")
+			inputs[hashKey] = resource.NewStringProperty(asset.Hash)
+		}
+	}
+	return inputs, nil
 }
