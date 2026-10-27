@@ -1,11 +1,11 @@
 module github.com/rhysmdnz/pulumi-containerregistry/provider
 
-go 1.26.6
+go 1.26.10
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
-	github.com/pulumi/pulumi/pkg/v3 v3.270.0
-	github.com/pulumi/pulumi/sdk/v3 v3.270.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.142.0
+	github.com/pulumi/pulumi/pkg/v3 v3.272.0
+	github.com/pulumi/pulumi/sdk/v3 v3.272.0
 	github.com/rhysmdnz/terraform-provider-containerregistry/shim v0.0.15
 )
 
@@ -173,11 +173,11 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-cloud-sdk/go v1.20261012.0 // indirect
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.114.2 // indirect
-	github.com/pulumi/pulumi-hcl v0.18.5 // indirect
-	github.com/pulumi/pulumi-java v1.37.4 // indirect
-	github.com/pulumi/pulumi-yaml v1.38.10 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20261026.1126 // indirect
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.116.1 // indirect
+	github.com/pulumi/pulumi-hcl v0.18.8 // indirect
+	github.com/pulumi/pulumi-java v1.37.8 // indirect
+	github.com/pulumi/pulumi-yaml v1.38.14 // indirect
 	github.com/rhysmdnz/terraform-provider-containerregistry v0.0.15 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.15.0 // indirect
@@ -243,8 +243,8 @@ require (
 	google.golang.org/api v0.290.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20260724162435-b2f20204f0df // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20261012220534-4341edf3f941 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20261012220534-4341edf3f941 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20261019180522-ce908d29299b // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261019180522-ce908d29299b // indirect
 	google.golang.org/grpc v1.84.0 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
